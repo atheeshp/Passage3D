@@ -42,7 +42,18 @@ func CreateUpgradeHandler(
 }
 
 func ExecuteProposal(ctx sdk.Context, ak auth.AccountKeeper, bk bank.Keeper, ck claim.Keeper) error {
-	var newClaimRecords = []claimtypes.ClaimRecord{}
+	var newClaimRecords = []claimtypes.ClaimRecord{
+		{
+			Address:         "pasg1jzqrpcw826g80q5qf3mttxtwy76u8grclgg3gt",
+			ClaimableAmount: sdk.NewCoins(sdk.NewCoin("upasg", sdk.NewInt(200000))),
+			ActionCompleted: []bool{false},
+		},
+		{
+			Address:         "pasg13cey0hpx6lj825nxthhjxnm3kyzuxq5x2t20u7",
+			ClaimableAmount: sdk.NewCoins(sdk.NewCoin("upasg", sdk.NewInt(500000))),
+			ActionCompleted: []bool{false},
+		},
+	}
 	var sixMonths = time.Hour * 24 * 180
 
 	// sum the newly added claim records balance
